@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcClient";
+
+service NumberGuess{
+	rpc ResetNumber(ResetNumberRequest) returns (ResetNumberReply);
+	rpc Guess(NumberGuessRequest) returns (NumberGuessReply);
+}
+
+message ResetNumberRequest{
+}
+
+message ResetNumberReply{
+	int32 rangeStart = 1;
+	int32 rangeEnd = 2;
+}
+
+message NumberGuessRequest{
+	string name = 1;
+	int32 number = 2;
+}
+
+message NumberGuessReply{
+	repeated string winners = 1;
+}
